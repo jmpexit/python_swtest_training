@@ -1,1 +1,1 @@
-# python_swtest_training
+# Readme file for python sw testing training
