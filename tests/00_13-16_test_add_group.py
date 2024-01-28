@@ -7,7 +7,7 @@ from group import Group
 
 def is_alert_present(wd):
     try:
-        wd.switch_to_alert().text
+        var = wd.switch_to_alert().text
         return True
     except:
         return False
