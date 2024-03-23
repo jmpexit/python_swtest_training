@@ -20,7 +20,7 @@ def is_alert_present(wd):
         return False
 
 class test_add_group(unittest.TestCase):
-    def setUp(self):
+    def setUp(self): #self представляет экземпляр классса
         self.wd = WebDriver() #.Chrome(executable_path=r'')
 #        self.wd = By()
         self.wd.implicitly_wait(60)
@@ -55,7 +55,7 @@ class test_add_group(unittest.TestCase):
         try: self.wd.find_element(by=how, value=what)
         except NoSuchElementException as e: return False
         return True
-    
+
     def tearDown(self):
         self.wd.quit()
 
