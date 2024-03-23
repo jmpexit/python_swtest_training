@@ -11,7 +11,7 @@ from group import Group
 
 
 class TestAddGroup(unittest.TestCase):
-    def setUp(self):
+    def setUp(self): #self - представляет экземпляр классса
        #self.binary = FirefoxBinary("C:\\Program Files\\Mozilla Firefox\\firefox.exe")
        #path = ("C:\\Program Files\\Mozilla Firefox\\firefox.exe")
         #self.profile = webdriver.FirefoxProfile()
@@ -25,7 +25,9 @@ class TestAddGroup(unittest.TestCase):
         wd.get("http://localhost/addressbook/")
         wd.implicitly_wait(20)
 
-    def login(self, wd, username, passwd):
+    def login(self, username, passwd):
+        wd = self.wd
+        self.open_home_page()
         wd.find_element(By.NAME, 'user').click()
         wd.find_element(By.NAME, 'user').clear()
         wd.find_element(By.NAME, 'user').send_keys(username)
@@ -34,10 +36,13 @@ class TestAddGroup(unittest.TestCase):
         wd.find_element(By.NAME, 'pass').send_keys(passwd)
         wd.find_element(By.CSS_SELECTOR, "input[type=\"submit\"]").click()
 
-    def open_group_list(self, wd):
+    def open_group_list(self):
+        wd = self.wd
         wd.find_element(By.LINK_TEXT, 'groups').click()
 
-    def create_new_group(self, wd, group):
+    def create_new_group(self, group):
+        wd = self.wd
+        self.open_group_list()
         wd.find_element(By.NAME, 'new').click()
         wd.find_element(By.NAME, 'group_name').click()
         wd.find_element(By.NAME, 'group_name').clear()
@@ -49,24 +54,22 @@ class TestAddGroup(unittest.TestCase):
         wd.find_element(By.NAME, 'group_footer').clear()
         wd.find_element(By.NAME, 'group_footer').send_keys(group.gp_footer)
         wd.find_element(By.NAME, 'submit').click()
+        self.return_to_groups()
 
-    def return_to_groups(self, wd):
+    def return_to_groups(self):
+        wd = self.wd
         wd.find_element(By.LINK_TEXT, 'group page').click()
 
-    def logout(self, wd):
+    def logout(self):
+        wd = self.wd
         wd.find_element(By.LINK_TEXT, 'Logout').click()
 
     def test_add_group(self):
         success = True
-        wd = self.wd
-        self.open_home_page()
         sleep(5)
-        self.login(wd, username="admin", passwd="secret")
-      #  wd.find_element_by_xpath("//input[@value='Login']").click()
-        self.open_group_list(wd)
-        self.create_new_group(wd, Group(name="group1", header="group header 1", footer="group footer 1"))
-        self.return_to_groups(wd)
-        self.logout(wd)
+        self.login(username="admin", passwd="secret")
+        self.create_new_group(Group(name="group1", header="group header 1", footer="group footer 1"))
+        self.logout()
         self.assertTrue(success)
 
 
