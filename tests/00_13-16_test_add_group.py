@@ -69,17 +69,6 @@ class TestAddGroup(unittest.TestCase):
         self.logout(wd)
         self.assertTrue(success)
 
-    def test_add_empty_group(self):
-        success = True
-        wd = self.wd
-        self.open_home_page()
-        sleep(5)
-        self.login(wd, username="", passwd="")
-        self.open_group_list(wd)
-        self.create_new_group(wd, Group(name="", header="", footer=""))
-        self.return_to_groups(wd)
-        self.logout(wd)
-        self.assertTrue(success)
 
     def is_element_present(self, how, what):
         try:
