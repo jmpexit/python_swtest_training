@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 import pytest
-from time import sleep
-from group import Group
-from application import Application
+from model.group import Group
+from fixture.application import Application
 
 
 @pytest.fixture # т.о. обозначаем пайтесту, что эта функция - фикстура

@@ -1,14 +1,11 @@
 # -*- coding: utf-8 -*-
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
-from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 import unittest
 from time import sleep
 from selenium.common.exceptions import NoSuchElementException, NoAlertPresentException
-from group import Group
-from contact import Contact
+from model.contact import Contact
 
 class TestAddContact(unittest.TestCase):
     def setUp(self):
