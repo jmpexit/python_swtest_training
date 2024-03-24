@@ -1,7 +1,6 @@
-import group
 class Contact:
 
-    def __init__(self, name, midname, surname, nick, title, co, addr, hometel, mobtel, worktel, fax, email, bday, bmonth, byear, group):
+    def __init__(self, name, midname, surname, nick, title, co, addr, hometel, mobtel, worktel, fax, email, bday, bmonth, byear, groupname):
         self.con_name = name
         self.con_midname = midname
         self.con_surname = surname
@@ -17,4 +16,4 @@ class Contact:
         self.con_bday = bday
         self.con_bmonth = bmonth
         self.con_byear = byear
-        self.con_group = group
+        self.con_group = groupname
