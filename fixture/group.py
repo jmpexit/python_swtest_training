@@ -30,3 +30,37 @@ class GroupHelper:
     def return_to_groups(self):
         wd = self.app.wd
         wd.find_element(By.LINK_TEXT, 'group page').click()
+
+    def delete_first(self):
+        wd = self.app.wd
+        self.open_group_list()
+        wd.find_element(By.NAME, 'selected[]').click()
+        wd.find_element(By.NAME, 'delete').click()
+        self.return_to_groups()
+
+    def update_first(self, group):
+        wd = self.app.wd
+        self.open_group_list()
+        wd.find_element(By.NAME, 'selected[]').click()
+        wd.find_element(By.NAME, 'edit').click()
+        wd.find_element(By.NAME, 'group_name').click()
+        wd.find_element(By.NAME, 'group_name').clear()
+        wd.find_element(By.NAME, 'group_name').send_keys(group.gp_name)
+        wd.find_element(By.NAME, 'group_header').click()
+        wd.find_element(By.NAME, 'group_footer').click()
+        wd.find_element(By.NAME, 'group_header').clear()
+        wd.find_element(By.NAME, 'group_header').send_keys(group.gp_header)
+        wd.find_element(By.NAME, 'group_footer').clear()
+        wd.find_element(By.NAME, 'group_footer').send_keys(group.gp_footer)
+        wd.find_element(By.NAME, 'update').click()
+        self.return_to_groups()
+
+    def delete(self, group):
+        wd = self.app.wd
+        self.open_group_list()
+        wd.find_element(By.XPATH, "(.//*[normalize-space(text()) and normalize-space(.)='group1'])[2]/input[1]").click()
+        wd.find_element(By.NAME, 'delete').click()
+        self.return_to_groups()
+
+
+

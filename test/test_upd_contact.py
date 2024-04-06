@@ -5,9 +5,9 @@ from model.contact import Contact
 def test_add_contact(app):
     app.open_home_page()
     app.session.login(username="admin", passwd="secret")
-    app.contact.create(Contact(name="Uu", midname="M", surname="Nii", nick="pinky", title="ti3", \
+    app.contact.update_some(Contact(name="Uuu", midname="Mm", surname="Niiiiiii", nick="pinky", title="ti3", \
                                     co="very big co3", addr="USA, NY, B, sm.str, smth", hometel="111-11-13",\
-                                    mobtel="1-111-111-1113", worktel="222-22-23", fax="222-22-23", email="uum@ex.ny",\
-                                    bday="5", bmonth="January", byear="1986", groupname="group3"))
+                                    mobtel="1-111-111-1113", worktel="888-22-23", fax="888-22-23", email="uum@ex.ny",\
+                                    bday="5", bmonth="January", byear="1986", groupname="group1"))
     sleep(5)
     app.session.logout()
