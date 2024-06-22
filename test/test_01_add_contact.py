@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from time import sleep
 from model.contact import Contact
 
 def test_add_contact(app):
@@ -8,4 +7,3 @@ def test_add_contact(app):
                                     co="very big co3", addr="USA, NY, B, sm.str, smth", hometel="111-11-13",\
                                     mobtel="1-111-111-1113", worktel="222-22-23", fax="222-22-23", email="uum@ex.ny",\
                                     bday="5", bmonth="January", byear="1986", groupname="group3"))
-    sleep(5)

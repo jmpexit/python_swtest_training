@@ -10,7 +10,6 @@ class Application:
 
     def __init__(self): #конструктор класса
         self.wd = webdriver.Chrome()
-        self.wd.implicitly_wait(30)
         self.session = SessionHelper(self) #помощник получает ссылку на объект класса App.
         self.group = GroupHelper(self)
         self.contact = ContactHelper(self)
@@ -25,7 +24,7 @@ class Application:
     def open_home_page(self):
         wd = self.wd
         wd.get("http://localhost/addressbook/")
-        wd.implicitly_wait(20)
+ #       wd.implicitly_wait(20)
 
 
     def return_to_home(self):
