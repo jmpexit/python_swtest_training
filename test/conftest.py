@@ -12,7 +12,7 @@ def app(request):
     else:
         if not fixture.is_valid():
             fixture = Application()
-            fixture.session.login(username="admin", passwd="secret")
+    fixture.session.ensure_login(username="admin", passwd="secret")
     return fixture
 
 @pytest.fixture(scope="session", autouse=True)  #отдельная фикстура для финализации
@@ -20,7 +20,7 @@ def app(request):
                                         #несмотря на то, что не указана ни в одном из тестов
 def stop(request):
     def fin():
-        fixture.session.logout()
+        fixture.session.ensure_logout()
         fixture.destroy()
     request.addfinalizer(fin) # для разрушения фикстуры
     return fixture
