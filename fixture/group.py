@@ -68,5 +68,10 @@ class GroupHelper:
         wd.find_element(By.NAME, 'delete').click()
         self.return_to_groups()
 
+    def count(self):
+        wd = self.app.wd
+        self.open_group_list()
+        return len(wd.find_elements(By.NAME, 'selected[]'))
+
 
 

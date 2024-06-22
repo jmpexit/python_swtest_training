@@ -117,6 +117,11 @@ class ContactHelper:
         wd.switch_to.alert.accept()
         self.app.return_to_home()
 
+    def count(self):
+        wd = self.app.wd
+        self.app.return_to_home()
+        return len(wd.find_elements(By.NAME, 'selected[]'))
+
        # wd.find_element(By.XPATH, "(.//*[normalize-space(text()) and normalize-space(.)='em@ex.ca'])[3]/following::input[1]").click()
        # wd.find_element(By.XPATH, "(.//*[normalize-space(text()) and normalize-space(.)='em@ex.ca'])[3]/following::td[8]").click()
        # wd.find_element(By.XPATH, "//input[@value='Delete']").click()
